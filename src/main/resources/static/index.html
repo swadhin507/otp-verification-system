@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>OTP Verification System | Secure Authentication</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="icon">🔐</div>
+            <h2>OTP Verification</h2>
+            <p>Secure authentication with one-time password</p>
+        </div>
+
+        <div class="card-body">
+            <!-- Step 1: Mobile Number Input -->
+            <div id="step1" class="step active">
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number</label>
+                    <div class="input-group">
+                        <span class="country-code">+91</span>
+                        <input type="tel"
+                               id="mobileNumber"
+                               placeholder="9876543210"
+                               maxlength="10"
+                               autocomplete="off"
+                               pattern="[0-9]{10}">
+                    </div>
+                    <small>Enter your 10-digit mobile number</small>
+                </div>
+                <button id="sendOtpBtn" class="btn btn-primary" onclick="sendOtp()">
+                    Send OTP
+                </button>
+            </div>
+
+            <!-- Step 2: OTP Input -->
+            <div id="step2" class="step">
+                <div class="form-group">
+                    <label for="otp">Enter Verification Code</label>
+                    <input type="text"
+                           id="otp"
+                           placeholder="Enter 6-digit OTP"
+                           maxlength="6"
+                           autocomplete="off"
+                           pattern="[0-9]{6}">
+                    <div class="otp-timer">
+                        <div class="timer-container">
+                            <span class="timer-label">OTP expires in:</span>
+                            <span id="timer" class="timer-value">05:00</span>
+                        </div>
+                        <button id="resendBtn" class="btn-link" onclick="resendOtp()" disabled>
+                            Resend OTP
+                        </button>
+                    </div>
+                </div>
+                <button id="verifyOtpBtn" class="btn btn-success" onclick="verifyOtp()">
+                    Verify OTP
+                </button>
+                <button class="btn btn-secondary" onclick="goBack()">
+                    ← Back
+                </button>
+            </div>
+
+            <!-- Message Display -->
+            <div id="message" class="message"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
